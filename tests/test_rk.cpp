@@ -1,16 +1,15 @@
 #include <iostream>
 #include <fstream>
-#include <chrono>
 #include <algorithm>
-#include "../headers/spc.h"
+#include "../headers/runge_cutta.h"
 
 using std::cout;
 
 int main() {
     Vector a, b;
-
-    double arr1[] = {0, 0, 0, 20, 10, 0};
-    double arr2[] = {0, 0, 0, 10, 10, 0};
+    double t = 0;
+    double arr1[] = {0, 0, 0, 20, 100, 0};
+    double arr2[] = {0, 0, 0, 10, 60, 0};
     init_vector(&a, 6, arr1);
     init_vector(&b, 6, arr2);
 
@@ -20,12 +19,25 @@ int main() {
 
     print_spc(spc1);
     print_spc(spc2);
-    // std::ofstream myfile;   
-    // myfile.open ("example.csv");
 
+    std::ofstream f("rc.csv", std::ios::out); 
+    f << "t,x1,y1,z1,vx1,vy1,vz1,x2,y2,z2,vx2,vy2,vz2,\n";
 
+    double dt = 2;
+    while (t < 30) {  
+        runge_cutta(&spc1, t, dt, &force_test);
+        runge_cutta(&spc2, t, dt, &force_test);
+        t += dt;
+        f << t << ',';
+        for (double ci: spc1.y.comps) {
+            f << ci << ',';
+        }
+        for (double ci: spc2.y.comps) {
+            f << ci << ',';
+        }
+        f << '\n';
+    }
 
-    // myfile.close();
     return 0;
 }
  
