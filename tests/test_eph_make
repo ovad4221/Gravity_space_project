@@ -1,0 +1,2 @@
+all:
+   g++ test_ephem.cpp ../calceph/lib/libcalceph.a ../glfw-3.3.8/CMake/x86_64-w64-mingw32-clang.cmake -o 222

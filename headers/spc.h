@@ -7,7 +7,7 @@
 struct Spacecraft {
 	// m in kg
 	double m;
-	// 6n-vector <y> = (x, y, z, vx, vy, vz )
+	// 6n-vector <y> = (x, y, z, vx, vy, vz) 
 	Vector y;
     // видимо стоит переделать реализацию остатка
     // и спросить про kwargs

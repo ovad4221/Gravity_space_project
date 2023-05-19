@@ -1,0 +1,2 @@
+all: 
+	g++ ../source/vector.cpp ../source/spc.cpp ../source/vichmath.cpp ../source/jd.cpp ../source/planets.cpp ../calceph/lib/libcalceph.a fly.cpp 

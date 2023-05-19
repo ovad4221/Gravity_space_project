@@ -13,6 +13,10 @@ struct Vector {
 
 void init_vector(Vector* vect, unsigned int n, double comps[]);
 
+Vector zeros_v(int n);
+
+double module_v(Vector* vect);
+
 void print_v(Vector vect);
 
 Vector mult_v(Vector vect, double a);

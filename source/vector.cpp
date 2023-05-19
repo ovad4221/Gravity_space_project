@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include "../headers/vector.h"
+#include <cmath>
 
 
 // init vector
@@ -9,6 +10,25 @@ void init_vector(Vector* vect, unsigned int n, double comps[]) {
 	for (unsigned int i = 0; i < n; i++){
 		(*vect).comps[i] = comps[i];
 	}
+}
+
+double module_v(Vector* vect) {
+	double sq_sum = 0;
+	for (unsigned int i = 0; i < vect->n; i++) {
+		sq_sum += pow(vect->comps[i], 2);
+	}
+	return std::sqrt(sq_sum);
+}
+
+Vector zeros_v(int n) {
+	Vector vect_new;
+	vect_new.n = n;
+
+	for (unsigned int i = 0; i < n; i++){
+		vect_new.comps[i] = 0;
+	}
+
+    return vect_new;
 }
 
 
@@ -59,7 +79,7 @@ void plus_eq(Vector* vect, Vector d_vect) {
 }
 
 
-// vector slice fron i0 to i1
+// vector slice from i0 to i1
 Vector cut_v(Vector vect, int i0, int i1) {
 	if (i1 < i0){
 		std::cout << "Warning. i1 must be >= i0. indexes swapped. \n";

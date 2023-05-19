@@ -1,0 +1,2 @@
+all: 
+	g++ -std=c++17 ../source_oop/vector.cpp test_vector.cpp 

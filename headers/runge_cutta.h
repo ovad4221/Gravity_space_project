@@ -4,10 +4,8 @@
 
 #define DEBUG
 
-Vector force_test(Spacecraft *spc, double t);
+Vector f_func(Spacecraft* spc, space_object *grav_o, Vector (*force)(Spacecraft *spc, space_object *grav_o));
 
-Vector f_func(Spacecraft* spc, double t, Vector (*force)(Spacecraft *spc, double t));
-
-void runge_cutta(Spacecraft* spc, double t, double dt, Vector (*force)(Spacecraft *spc, double t));
+void runge_cutta(Spacecraft* spc, space_object *grav_o, double dt, Vector (*force)(Spacecraft *spc, space_object *grav_o));
 
 #endif

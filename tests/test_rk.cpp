@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
-#include "../headers/runge_cutta.h"
+#include "../headers/rc_memory.h"
 
 using std::cout;
 
