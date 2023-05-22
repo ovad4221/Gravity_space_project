@@ -1,4 +1,6 @@
 #include <iostream>
+#include <ostream>
+#include <istream>
 #include <cmath>
 #include <algorithm>
 #include <vector>
@@ -15,6 +17,7 @@ using std::endl;
 Vector::Vector(vector<double> &vect): vect(vect) {};
 Vector::Vector(unsigned int n): vect(n, 0) {};
 Vector::Vector(std::initializer_list<double> l): vect(l) {};
+Vector::Vector(): Vector(6) {};
 
 Vector::~Vector() = default;
 
@@ -100,7 +103,16 @@ void Vector::operator-= (const Vector& v2) {
     }
 }
 
-Vector Vector::operator* (const int a) const {
+// template<typename T>
+// Vector Vector::operator* (const T a) const {
+//     Vector v_out(vect.size());
+//     for (unsigned int i = 0; i < vect.size(); ++i) {
+//         v_out.vect[i] = vect[i] * a;
+//     }
+//     return v_out;
+// }
+
+Vector Vector::operator* (const double a) const {
     Vector v_out(vect.size());
     for (unsigned int i = 0; i < vect.size(); ++i) {
         v_out.vect[i] = vect[i] * a;
@@ -108,7 +120,7 @@ Vector Vector::operator* (const int a) const {
     return v_out;
 }
 
-void Vector::operator*= (const int a) {
+void Vector::operator*= (const double a) {
     for (unsigned int i = 0; i < vect.size(); ++i) {
         vect[i] *= a;
     }
@@ -154,8 +166,16 @@ void Vector::glue_v(const Vector &v2) {
     }
 }
 
+// template<typename T>
+// Vector operator* (T a, const Vector& v) { 
+//     Vector v_out(v.getSize());
+//         for (unsigned int i = 0; i < v.getSize(); ++i) {
+//             v_out.setValue(i, v.getValue(i) * a);
+//         }
+//         return v_out;
+// }
 
-Vector operator* (int a, const Vector& v) { 
+Vector operator* (double a, const Vector& v) { 
     Vector v_out(v.getSize());
         for (unsigned int i = 0; i < v.getSize(); ++i) {
             v_out.setValue(i, v.getValue(i) * a);

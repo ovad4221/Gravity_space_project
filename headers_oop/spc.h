@@ -1,6 +1,7 @@
 #ifndef SPC_H
 #define SPC_H
 #include "../headers_oop/vector.h"
+#include <ostream>
 
 #define DEBUG
 
@@ -17,21 +18,31 @@ private:
     // side characteristics
     string name;
 public:
-    Spacecraft(Vector &y0, double m=1, string name="with no name");
-    Spacecraft(double m=1, string name="with no name"); 
+    Spacecraft(const Vector &y0, double m, string name);
+    Spacecraft(const Vector &y0, double m);
+    Spacecraft(const Vector &y0, string name);
+    Spacecraft(const Vector &y0);
+   
+    Spacecraft(double m, string name);
+    Spacecraft(double m);
+    Spacecraft(string name);
+    Spacecraft();
+
     ~Spacecraft();
 
-    double get_m() const {
-        return m;
-    }
+    double get_m() const;
 
-    Vector get_y() const {
-        return y;
-    }
+    Vector get_y() const;
 
-    string get_name() const {
-        return name;
-    }
+    string get_name() const;
+
+    Spacecraft operator+(const Vector& vect);
+
+    // return new spc like old just with y = (*this).y + vect
+    void set_y(const Vector &vect);
+
+    // (*this).y + vect
+    void operator+=(const Vector& vect);
 };
 
 std::ostream& operator<<(std::ostream& os, const Spacecraft &spc);

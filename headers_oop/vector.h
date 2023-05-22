@@ -3,6 +3,8 @@
 
 #define DEBUG
 #include <vector>
+#include <ostream>
+#include <iostream>
 
 using std::vector;
 
@@ -13,8 +15,10 @@ private:
     vector<double> vect;
 public:
     Vector(vector<double> &vect);
+    // Vector with n zeros
     Vector(unsigned int n);
     Vector(std::initializer_list<double> l);
+    Vector();
     
     ~Vector();
 
@@ -41,9 +45,15 @@ public:
 
     void operator-= (const Vector& v2);
 
-    Vector operator* (const int a) const;
+    Vector operator* (const double a) const;
 
-    void operator*= (const int a);
+    // template<typename T>
+    // Vector operator* (const T a) const;
+    // // must have
+    // Vector operator* (const double a) const;
+    // Vector operator* (const int a) const;
+
+    void operator*= (const double a);
 
     void resize(unsigned int n);
 
@@ -56,7 +66,12 @@ public:
     void glue_v(const Vector &v2);
 };
 
-Vector operator* (int a, const Vector& v);
+Vector operator* (double a, const Vector& v);
+
+// template<typename T>
+// Vector operator* (T a, const Vector& v);
+// Vector operator* (double a, const Vector& v);
+// Vector operator* (int a, const Vector& v);
 
 std::ostream& operator<<(std::ostream& os, const Vector &v);
 
