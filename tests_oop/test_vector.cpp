@@ -18,6 +18,7 @@ int main() {
     cout << (a == b) << (a != b) << endl;
     cout << a - b << endl;
     cout << a.slice(3, 6);
+    cout << a[1];
 
     cout << "all ok)" << endl;
 

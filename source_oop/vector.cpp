@@ -37,6 +37,10 @@ int Vector::getValue(unsigned int i) const {
     return vect[i];
 }
 
+double& Vector::operator[] (unsigned int i) {
+    return vect[i];
+}
+
 void Vector::setValue(unsigned int i, int value) {
     vect[i] = value;
 }
@@ -59,7 +63,7 @@ bool Vector::operator!= (const Vector& v2) const {
 
 Vector Vector::operator+ (const Vector& v2) const {
     if (v2.vect.size() != vect.size()) {
-        cout << "ERROR +: vectors of different dimensions";
+        cout << "ERROR +: vectors of different dimensions \n";
         return *this;
     }
     Vector v_out(vect.size());
@@ -71,7 +75,7 @@ Vector Vector::operator+ (const Vector& v2) const {
 
 Vector Vector::operator- (const Vector& v2) const {
     if (v2.vect.size() != vect.size()) {
-        cout << "ERROR -: vectors of different dimensions";
+        cout << "ERROR -: vectors of different dimensions \n";
         return *this;
     }
     Vector v_out(vect.size());
@@ -83,7 +87,7 @@ Vector Vector::operator- (const Vector& v2) const {
 
 void Vector::operator+= (const Vector& v2) {
     if (v2.vect.size() != vect.size()) {
-        cout << "ERROR +=: vectors of different dimensions";
+        cout << "ERROR +=: vectors of different dimensions \n";
     }
     else {
         for (unsigned int i = 0; i < vect.size(); ++i) {
@@ -94,7 +98,7 @@ void Vector::operator+= (const Vector& v2) {
 
 void Vector::operator-= (const Vector& v2) {
     if (v2.vect.size() != vect.size()) {
-        cout << "ERROR +=: vectors of different dimensions";
+        cout << "ERROR +=: vectors of different dimensions \n";
     }
     else {
         for (unsigned int i = 0; i < vect.size(); ++i) {

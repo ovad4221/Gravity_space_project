@@ -28,7 +28,9 @@ public:
     unsigned int getSize() const;
 
     // Получение значения i-ой координаты вектора
-    int getValue(unsigned int i) const;
+    int getValue (unsigned int i) const;
+
+    double& operator[] (unsigned int i);
 
     // Задание значения i-ой координаты вектора равным value
     void setValue(unsigned int i, int value);
